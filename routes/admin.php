@@ -46,3 +46,16 @@ Route::group(['prefix' => 'brands'], function () {
     Route::any('/unassigned', 'AdminAuth\BrandsController@unassigned')->name('brands.unassigned');
     Route::any('/assign', 'AdminAuth\BrandsController@assign')->name('brands.assign');
 });
+
+
+Route::group(['prefix' => 'category'], function () {
+    Route::get('/index', 'AdminAuth\CategoryController@index')->name('category.index');
+    Route::get('/create', 'AdminAuth\CategoryController@create')->name('category.create');
+    Route::post('/store', 'AdminAuth\CategoryController@store')->name('category.store');
+    Route::get('/edit/{id}', 'AdminAuth\CategoryController@edit')->name('category.edit');
+    Route::post('/update', 'AdminAuth\CategoryController@update')->name('category.update');
+    Route::post('/delete', 'AdminAuth\CategoryController@delete')->name('category.delete');
+    Route::post('/deleteall', 'AdminAuth\CategoryController@deleteall')->name('category.deleteall');
+    Route::any('/unassigned', 'AdminAuth\CategoryController@unassigned')->name('category.unassigned');
+    Route::any('/assign', 'AdminAuth\CategoryController@assign')->name('category.assign');
+});
