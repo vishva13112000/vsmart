@@ -251,11 +251,21 @@ License: You must have a valid license purchased only from themeforest(the above
                                                                                                      class="kt-menu__link "><i
                                         class="kt-menu__link-icon fa fa-users"></i><span
                                         class="kt-menu__link-text">Shop</span></a></li>
+                              <!--    <a href="#"
+                                                                                                     class="kt-menu__link "><i
+                                        class="kt-menu__link-icon fa fa-users"></i><span
+                                        class="kt-menu__link-text">Shop</span></a></li> -->
 
+                                <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true">
+                                <a href="{{route('admin.subscription.index')}}"
+                                                                                                     class="kt-menu__link "><i
+                                        class="kt-menu__link-icon fa fa-list"></i><span
+                                        class="kt-menu__link-text">Subscription</span></a></li>
 
 
 
                         @endif
+
 
 
                     </ul>

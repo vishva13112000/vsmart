@@ -39,6 +39,12 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
+        $this->mapShopssRoutes();
+
+        $this->mapShopRoutes();
+
+        $this->mapEmployeeRoutes();
+
         $this->mapAdminRoutes();
 
         //
@@ -60,6 +66,63 @@ class RouteServiceProvider extends ServiceProvider
             'namespace' => $this->namespace,
         ], function ($router) {
             require base_path('routes/admin.php');
+        });
+    }
+
+    /**
+     * Define the "employee" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapEmployeeRoutes()
+    {
+        Route::group([
+            'middleware' => ['web', 'employee', 'auth:employee'],
+            'prefix' => 'employee',
+            'as' => 'employee.',
+            'namespace' => $this->namespace,
+        ], function ($router) {
+            require base_path('routes/employee.php');
+        });
+    }
+
+    /**
+     * Define the "shop" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapShopRoutes()
+    {
+        Route::group([
+            'middleware' => ['web', 'shop', 'auth:shop'],
+            'prefix' => 'shop',
+            'as' => 'shop.',
+            'namespace' => $this->namespace,
+        ], function ($router) {
+            require base_path('routes/shop.php');
+        });
+    }
+
+    /**
+     * Define the "shopss" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapShopssRoutes()
+    {
+        Route::group([
+            'middleware' => ['web', 'shopss', 'auth:shopss'],
+            'prefix' => 'shopss',
+            'as' => 'shopss.',
+            'namespace' => $this->namespace,
+        ], function ($router) {
+            require base_path('routes/shopss.php');
         });
     }
 

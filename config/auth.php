@@ -36,6 +36,21 @@ return [
     */
 
     'guards' => [
+        'shopss' => [
+            'driver' => 'session',
+            'provider' => 'shopsses',
+        ],
+
+        'shop' => [
+            'driver' => 'session',
+            'provider' => 'shops',
+        ],
+
+        'employee' => [
+            'driver' => 'session',
+            'provider' => 'employees',
+        ],
+
         'admin' => [
             'driver' => 'session',
             'provider' => 'admins',
@@ -71,6 +86,21 @@ return [
     */
 
     'providers' => [
+        'shopsses' => [
+            'driver' => 'eloquent',
+            'model' => App\Shopss::class,
+        ],
+
+        'shops' => [
+            'driver' => 'eloquent',
+            'model' => App\Shop::class,
+        ],
+
+        'employees' => [
+            'driver' => 'eloquent',
+            'model' => App\Employee::class,
+        ],
+
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Admin::class,
@@ -103,6 +133,24 @@ return [
     */
 
     'passwords' => [
+        'shopsses' => [
+            'provider' => 'shopsses',
+            'table' => 'shopss_password_resets',
+            'expire' => 60,
+        ],
+
+        'shops' => [
+            'provider' => 'shops',
+            'table' => 'shop_password_resets',
+            'expire' => 60,
+        ],
+
+        'employees' => [
+            'provider' => 'employees',
+            'table' => 'employee_password_resets',
+            'expire' => 60,
+        ],
+
         'admins' => [
             'provider' => 'admins',
             'table' => 'admin_password_resets',
