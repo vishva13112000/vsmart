@@ -34,3 +34,15 @@ Route::group(['prefix' => 'subscription'], function () {
     Route::any('/unassigned', 'AdminAuth\SubscriptionController@unassigned')->name('subscription.unassigned');
     Route::any('/assign', 'AdminAuth\SubscriptionController@assign')->name('subscription.assign');
 });
+
+Route::group(['prefix' => 'brands'], function () {
+    Route::get('/index', 'AdminAuth\BrandsController@index')->name('brands.index');
+    Route::get('/create', 'AdminAuth\BrandsController@create')->name('brands.create');
+    Route::post('/store', 'AdminAuth\BrandsController@store')->name('brands.store');
+    Route::get('/edit/{id}', 'AdminAuth\BrandsController@edit')->name('brands.edit');
+    Route::post('/update', 'AdminAuth\BrandsController@update')->name('brands.update');
+    Route::post('/delete', 'AdminAuth\BrandsController@delete')->name('brands.delete');
+    Route::post('/deleteall', 'AdminAuth\BrandsController@deleteall')->name('brands.deleteall');
+    Route::any('/unassigned', 'AdminAuth\BrandsController@unassigned')->name('brands.unassigned');
+    Route::any('/assign', 'AdminAuth\BrandsController@assign')->name('brands.assign');
+});
