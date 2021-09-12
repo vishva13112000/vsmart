@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\ShopssAuth;
+namespace App\Http\Controllers\ShopAuth;
 
-use App\Shopss;
+use App\Shop;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/shopss/home';
+    protected $redirectTo = '/shop/home';
 
     /**
      * Create a new controller instance.
@@ -37,7 +37,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('shopss.guest');
+        $this->middleware('shop.guest');
     }
 
     /**
@@ -50,7 +50,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:shopsses',
+            'email' => 'required|email|max:255|unique:shops',
             'password' => 'required|min:6|confirmed',
         ]);
     }
@@ -59,11 +59,11 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return Shopss
+     * @return Shop
      */
     protected function create(array $data)
     {
-        return Shopss::create([
+        return Shop::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
@@ -77,7 +77,7 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm()
     {
-        return view('shopss.auth.register');
+        return view('shop.auth.register');
     }
 
     /**
@@ -87,6 +87,6 @@ class RegisterController extends Controller
      */
     protected function guard()
     {
-        return Auth::guard('shopss');
+        return Auth::guard('shop');
     }
 }

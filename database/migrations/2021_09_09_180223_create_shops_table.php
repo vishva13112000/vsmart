@@ -1,10 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateShopssTable extends Migration
+class CreateShopsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +12,19 @@ class CreateShopssTable extends Migration
      */
     public function up()
     {
-        Schema::create('shopss', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('shops', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('name');
             $table->string('ownername');
-            $table->string('email');
             $table->string('contact');
             $table->text('address');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->string('viewpassword');
             $table->boolean('active')->default(1);
+            $table->rememberToken();
             $table->timestamps();
-             $table->softDeletes()->nullable();
+            $table->softDeletes()->nullable();
         });
     }
 
@@ -33,6 +35,6 @@ class CreateShopssTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shopss');
+        Schema::drop('shops');
     }
 }

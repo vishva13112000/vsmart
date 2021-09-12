@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\ShopssAuth;
+namespace App\Http\Controllers\AdminAuth;
 
-use App\Models\Shops;
+use App\Shop;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use Hash;
 class ShopController extends Controller
 {
     /**
@@ -15,8 +15,8 @@ class ShopController extends Controller
      */
     public function index()
     {
-        $shops = Shops::get();
-        return view('shopss.shop.index', compact('shops'));
+        $shops = Shop::get();
+        return view('admin.shop.index', compact('shops'));
     }
 
     /**
@@ -26,7 +26,7 @@ class ShopController extends Controller
      */
     public function create()
     {
-        return view('shopss.shop.create');
+        return view('admin.shop.create');
     }
 
     /**
@@ -38,12 +38,15 @@ class ShopController extends Controller
     public function store(Request $request)
     {
        
-        $shop = new Shops;
+        $shop = new Shop;
         $shop->name = $request->name;
         $shop->ownername = $request->ownername;
-        $shop->email = $request->email;
         $shop->contact = $request->contact;
         $shop->address = $request->address;
+        $shop->email = $request->email;
+        $shop->viewpassword = $request->password;
+        $shop->password = Hash::make($request->password);
+    
         $shop->save();
         return response()->Json(['status' => 'success']);
     }
@@ -67,8 +70,8 @@ class ShopController extends Controller
      */
     public function edit($id)
     {
-        $shop = Shops::where('id', $id)->first();
-        return view('shopss.shop.edit', compact('shop'));
+        $shop = Shop::where('id', $id)->first();
+        return view('admin.shop.edit', compact('shop'));
     }
 
     /**
@@ -80,13 +83,18 @@ class ShopController extends Controller
      */
     public function update(Request $request)
     {
-        $shop =  Shops::where('id',$request->id)->first();
-        
+        $shop =  Shop::where('id',$request->id)->first();
+      
         $shop->name = $request->name;
         $shop->ownername = $request->ownername;
-        $shop->email = $request->email;
         $shop->contact = $request->contact;
         $shop->address = $request->address;
+        $shop->email = $request->email;
+        if(!empty($request->password)){
+             $shop->password = Hash::make($request->password);
+            $shop->viewpassword = $request->password;
+        }
+       
         $shop->save();
         return response()->Json(['status' => 'success']);
     }
@@ -94,7 +102,7 @@ class ShopController extends Controller
 
     public function delete(Request $request)
     {
-        $shop = Shops::where('id', $request->id)->first();
+        $shop = Shop::where('id', $request->id)->first();
         $shop->delete();
         return response()->Json(['status' => 'success']);
     }
@@ -102,19 +110,19 @@ class ShopController extends Controller
     public function deleteall(Request $request)
     {
         $ids = $request->ids;
-        $shop=  Shops::whereIn('id',explode(",",$ids))->delete();
+        $shop=  Shop::whereIn('id',explode(",",$ids))->delete();
         return response()->Json(['status' => 'success']);
     }
     public function assign(Request $request)
     {
-        $shop = Shops::where('id', $request->id)->update(['active' => 1]);
+        $shop = Shop::where('id', $request->id)->update(['active' => 1]);
         return response()->Json(['status' => 'success']);
     }
 
     public function unassigned(Request $request)
     {
 //        dd($request->all());
-        $shop = Shops::where('id', $request->id)->update(['active' => 0]);
+        $shop = Shop::where('id', $request->id)->update(['active' => 0]);
         return response()->Json(['status' => 'success']);
     }
 }

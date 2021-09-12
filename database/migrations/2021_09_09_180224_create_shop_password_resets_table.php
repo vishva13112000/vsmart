@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateShopssPasswordResetsTable extends Migration
+class CreateShopPasswordResetsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreateShopssPasswordResetsTable extends Migration
      */
     public function up()
     {
-        Schema::create('shopss_password_resets', function (Blueprint $table) {
+        Schema::create('shop_password_resets', function (Blueprint $table) {
             $table->string('email')->index();
             $table->string('token')->index();
             $table->timestamp('created_at')->nullable();
@@ -26,6 +26,6 @@ class CreateShopssPasswordResetsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('shopss_password_resets');
+        Schema::drop('shop_password_resets');
     }
 }

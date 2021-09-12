@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\ShopssAuth;
+namespace App\Http\Controllers\ShopAuth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
@@ -28,7 +28,7 @@ class ResetPasswordController extends Controller
      *
      * @var string
      */
-    public $redirectTo = '/shopss/home';
+    public $redirectTo = '/shop/home';
 
 
     /**
@@ -38,7 +38,7 @@ class ResetPasswordController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('shopss.guest');
+        $this->middleware('shop.guest');
     }
 
     /**
@@ -52,7 +52,7 @@ class ResetPasswordController extends Controller
      */
     public function showResetForm(Request $request, $token = null)
     {
-        return view('shopss.auth.passwords.reset')->with(
+        return view('shop.auth.passwords.reset')->with(
             ['token' => $token, 'email' => $request->email]
         );
     }
@@ -64,7 +64,7 @@ class ResetPasswordController extends Controller
      */
     public function broker()
     {
-        return Password::broker('shopsses');
+        return Password::broker('shops');
     }
 
     /**
@@ -74,6 +74,6 @@ class ResetPasswordController extends Controller
      */
     protected function guard()
     {
-        return Auth::guard('shopss');
+        return Auth::guard('shop');
     }
 }

@@ -1,11 +1,11 @@
 @extends('shop.layout.auth')
 
 @section('content')
-<form class="kt-form login_form" id="login_form"  role="form" method="POST" action="{{ url('/shop/login') }}">
+<form class="kt-form login_form" id="login_form"  role="form" method="POST" action="{{ url('/admin/login') }}">
                         {{ csrf_field() }}
                             <div class="kt-login__signin">
                                 <div class="kt-login__head">
-                                    <h3 class="kt-login__title">Sign In To Shop</h3>
+                                    <h3 class="kt-login__title">Sign In To Admin</h3>
                                 </div>
                                 </div>
 

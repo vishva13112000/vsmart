@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\ShopssAuth;
+namespace App\Http\Controllers\ShopAuth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -29,7 +29,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    public $redirectTo = '/shopss/home';
+    public $redirectTo = '/shop/home';
 
     /**
      * Create a new controller instance.
@@ -38,7 +38,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('shopss.guest', ['except' => 'logout']);
+        $this->middleware('shop.guest', ['except' => 'logout']);
     }
 
     /**
@@ -48,7 +48,7 @@ class LoginController extends Controller
      */
     public function showLoginForm()
     {
-        return view('shopss.auth.login');
+        return view('shop.auth.login');
     }
 
     /**
@@ -58,6 +58,6 @@ class LoginController extends Controller
      */
     protected function guard()
     {
-        return Auth::guard('shopss');
+        return Auth::guard('shop');
     }
 }

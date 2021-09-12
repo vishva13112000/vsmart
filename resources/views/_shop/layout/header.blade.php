@@ -250,48 +250,12 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <a href="{{route('admin.shopcategory.index')}}"
                                                                                                      class="kt-menu__link "><i
                                         class="kt-menu__link-icon fa fa-users"></i><span
-                                        class="kt-menu__link-text">Shop Category</span></a></li>
-                              <!--    <a href="#"
-                                                                                                     class="kt-menu__link "><i
-                                        class="kt-menu__link-icon fa fa-users"></i><span
-                                        class="kt-menu__link-text">Shop</span></a></li> -->
-
-                                <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true">
-                                <a href="{{route('admin.subscription.index')}}"
-                                                                                                     class="kt-menu__link "><i
-                                        class="kt-menu__link-icon fa fa-list"></i><span
-                                        class="kt-menu__link-text">Subscription</span></a></li>
-
-                                 <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true">
-                                <a href="{{route('admin.brands.index')}}"
-                                                                                                     class="kt-menu__link "><i
-                                        class="kt-menu__link-icon fab fa-adn"></i><span
-                                        class="kt-menu__link-text">Brands</span></a></li>
-
-                                   <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true">
-                                <a href="{{route('admin.category.index')}}"
-                                                                                                     class="kt-menu__link "><i
-                                        class="kt-menu__link-icon fa fa-list"></i><span
-                                        class="kt-menu__link-text">Category</span></a></li>
-
-
-                                   <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true">
-                                <a href="{{route('admin.products.index')}}"
-                                                                                                     class="kt-menu__link "><i
-                                        class="kt-menu__link-icon fab fa-product-hunt"></i><span
-                                        class="kt-menu__link-text">Product</span></a></li>
-
-                                   <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true">
-                                <a href="{{route('admin.shop.index')}}"
-                                                                                                     class="kt-menu__link "><i
-                                        class="kt-menu__link-icon fa fa-users"></i><span
                                         class="kt-menu__link-text">Shop</span></a></li>
 
 
 
 
                         @endif
-
 
 
                     </ul>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\ShopssAuth;
+namespace App\Http\Controllers\ShopAuth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
@@ -28,7 +28,7 @@ class ForgotPasswordController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('shopss.guest');
+        $this->middleware('shop.guest');
     }
 
     /**
@@ -38,7 +38,7 @@ class ForgotPasswordController extends Controller
      */
     public function showLinkRequestForm()
     {
-        return view('shopss.auth.passwords.email');
+        return view('shop.auth.passwords.email');
     }
 
     /**
@@ -48,6 +48,6 @@ class ForgotPasswordController extends Controller
      */
     public function broker()
     {
-        return Password::broker('shopsses');
+        return Password::broker('shops');
     }
 }

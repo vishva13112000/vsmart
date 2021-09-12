@@ -45,6 +45,9 @@ class CategoryController extends Controller
         $category->title = $request->title;
         $category->save();
         return response()->Json(['status' => 'success']);
+
+        
+
     }
 
     /**

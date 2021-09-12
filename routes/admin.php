@@ -59,3 +59,30 @@ Route::group(['prefix' => 'category'], function () {
     Route::any('/unassigned', 'AdminAuth\CategoryController@unassigned')->name('category.unassigned');
     Route::any('/assign', 'AdminAuth\CategoryController@assign')->name('category.assign');
 });
+
+
+
+Route::group(['prefix' => 'products'], function () {
+    Route::get('/index', 'AdminAuth\ProductsController@index')->name('products.index');
+    Route::get('/create', 'AdminAuth\ProductsController@create')->name('products.create');
+    Route::post('/store', 'AdminAuth\ProductsController@store')->name('products.store');
+    Route::get('/edit/{id}', 'AdminAuth\ProductsController@edit')->name('products.edit');
+    Route::post('/update', 'AdminAuth\ProductsController@update')->name('products.update');
+    Route::post('/delete', 'AdminAuth\ProductsController@delete')->name('products.delete');
+    Route::post('/deleteall', 'AdminAuth\ProductsController@deleteall')->name('products.deleteall');
+    Route::any('/unassigned', 'AdminAuth\ProductsController@unassigned')->name('products.unassigned');
+    Route::any('/assign', 'AdminAuth\ProductsController@assign')->name('products.assign');
+});
+
+
+Route::group(['prefix' => 'shop'], function () {
+    Route::get('/index', 'AdminAuth\ShopController@index')->name('shop.index');
+    Route::get('/create', 'AdminAuth\ShopController@create')->name('shop.create');
+    Route::post('/store', 'AdminAuth\ShopController@store')->name('shop.store');
+    Route::get('/edit/{id}', 'AdminAuth\ShopController@edit')->name('shop.edit');
+    Route::post('/update', 'AdminAuth\ShopController@update')->name('shop.update');
+    Route::post('/delete', 'AdminAuth\ShopController@delete')->name('shop.delete');
+    Route::post('/deleteall', 'AdminAuth\ShopController@deleteall')->name('shop.deleteall');
+    Route::any('/unassigned', 'AdminAuth\ShopController@unassigned')->name('shop.unassigned');
+    Route::any('/assign', 'AdminAuth\ShopController@assign')->name('shop.assign');
+});
