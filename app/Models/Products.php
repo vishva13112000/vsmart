@@ -16,11 +16,11 @@ class Products extends Model
         return $this->belongsTo('App\Models\Category','category_id','id');
       }
        public function shop(){
-        return $this->belongsTo('App\Models\Shops','shop_id','id');
+        return $this->belongsTo('App\Shop','shop_id','id');
       }
 
-   
-   
+
+
 }
 
 

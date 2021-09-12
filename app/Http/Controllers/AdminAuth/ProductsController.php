@@ -20,6 +20,7 @@ class ProductsController extends Controller
     public function index()
     {
         $products = Products::get();
+//        dd($products);
         return view('admin.products.index', compact('products'));
     }
 
@@ -30,14 +31,10 @@ class ProductsController extends Controller
      */
     public function create()
     {
-
-          $data["product"] = Products::get();
-        // $data['categories'] = Category::where('active',1)->get();
-       
-       
-
-        // return view('donates.create')->with($data);
-        return view('admin.products.create')->with($data);
+        $categories = Category::where('active',1)->get();
+        $brands = Brands::where('active',1)->get();
+        $shops = Shop::where('active',1)->get();
+        return view('admin.products.create',compact('categories','brands','shops'));
     }
 
     /**
@@ -48,16 +45,26 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        
-        // $subscription = new Subscriptions;
-        // $subscription->name = $request->name;
-        // $subscription->duration = $request->duration;
-        // $subscription->durationtype = $request->durationtype;
-        // $subscription->price = $request->price;
-        // $subscription->subscriptiontype = $request->subscriptiontype;
-
-        // $subscription->save();
-        // return response()->Json(['status' => 'success']);
+//        dd($request->all());
+         $product=new Products();
+        $product->name=$request->name;
+        $product->brand_id=$request->brand_id;
+        $product->category_id=$request->category_id;
+        $product->description=$request->description;
+        $product->price=$request->price;
+        $product->discountprice=$request->discountprice;
+        $product->discountvalidfrom=$request->discountvalidfrom;
+        $product->discountvalidto=$request->discountvalidto;
+        $product->tax_id=$request->tax_id;
+        $product->shop_id=$request->shop_id;
+        $product->trending=$request->trending;
+        $product->pricetype=$request->pricetype;
+        $file = $request->image;
+        $filename = 'products-' . rand() . '.' . $file->getClientOriginalExtension();
+        $request->image->move(public_path('products'), $filename);
+        $product->image= 'products/' . $filename;
+        $product->save();
+         return response()->Json(['status' => 'success']);
     }
 
     /**
@@ -79,8 +86,11 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        // $subscription = Subscriptions::where('id', $id)->first();
-        // return view('admin.subscription.edit', compact('subscription'));
+        $product= Products::where('id',$id)->first();
+        $categories = Category::where('active',1)->get();
+        $brands = Brands::where('active',1)->get();
+        $shops = Shop::where('active',1)->get();
+         return view('admin.products.edit', compact('product','categories','brands','shops'));
     }
 
     /**
@@ -92,18 +102,28 @@ class ProductsController extends Controller
      */
     public function update(Request $request)
     {
-    //     $subscription =  Subscriptions::where('id',$request->id)->first();
-        
-      
-    //     $subscription->name = $request->name;
-    //     $subscription->duration = $request->duration;
-    //     $subscription->durationtype = $request->durationtype;
-    //     $subscription->price = $request->price;
-    //     $subscription->subscriptiontype = $request->subscriptiontype;
+        $product= Products::where('id',$request->id)->first();
+        $product->name=$request->name;
+        $product->brand_id=$request->brand_id;
+        $product->category_id=$request->category_id;
+        $product->description=$request->description;
+        $product->price=$request->price;
+        $product->discountprice=$request->discountprice;
+        $product->discountvalidfrom=$request->discountvalidfrom;
+        $product->discountvalidto=$request->discountvalidto;
+        $product->tax_id=$request->tax_id;
+        $product->shop_id=$request->shop_id;
+        $product->trending=$request->trending;
+        $product->pricetype=$request->pricetype;
+        if($request->image){
+            $file = $request->image;
+            $filename = 'products-' . rand() . '.' . $file->getClientOriginalExtension();
+            $request->image->move(public_path('products'), $filename);
+            $product->image= 'products/' . $filename;
+        }
 
-    //     $subscription->save();
-     
-    //     return response()->Json(['status' => 'success']);
+        $product->save();
+         return response()->Json(['status' => 'success']);
     }
 
 

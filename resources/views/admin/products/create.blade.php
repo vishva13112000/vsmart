@@ -1,80 +1,82 @@
 @extends('admin.main')
 @section('content')
-<div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
-    <br>
-    <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="kt-portlet">
-                    <div class="kt-portlet__head">
-                        <div class="kt-portlet__head-label">
-                            <h3 class="kt-portlet__head-title">
-                                Add Product
-                            </h3>
-                        </div>
-                        <div class="kt-portlet__head-toolbar">
-                            <div class="kt-portlet__head-wrapper">
-                                <div class="kt-portlet__head-actions">
-                                    <a href="{{route('admin.products.index')}}"
-                                    class="btn btn-success">Back</a>
+    <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+        <br>
+        <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="kt-portlet">
+                        <div class="kt-portlet__head">
+                            <div class="kt-portlet__head-label">
+                                <h3 class="kt-portlet__head-title">
+                                    Add Product
+                                </h3>
+                            </div>
+                            <div class="kt-portlet__head-toolbar">
+                                <div class="kt-portlet__head-wrapper">
+                                    <div class="kt-portlet__head-actions">
+                                        <a href="{{route('admin.products.index')}}"
+                                           class="btn btn-success">Back</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <form class="productsFrm">
-                        @method('POST')
-                        @csrf
-                        <div class="kt-portlet__foot">
-                            <div class="kt-form__actions">
-                                <div class="row">
-                                    <div class="form-group col-4">
-                                        <label>Product Name</label>
-                                        <input type="text" class="form-control" id="name" name="name">
+                        <form class="productsFrm">
+                            @method('POST')
+                            @csrf
+                            <div class="kt-portlet__foot">
+                                <div class="kt-form__actions">
+                                    <div class="row">
+                                        <div class="form-group col-4">
+                                            <label>Product Name</label>
+                                            <input type="text" class="form-control" id="name" name="name">
 
-                                    </div>
+                                        </div>
 
-                                    <div class="form-group col-4">
-                                        <label>Brand Name</label>
-                                        <!--end::Label-->
-                                        <select class="form-control" name="brand_id" required="">
-                                            <option value="">--Select Brand --</option>
-                                            @if(!empty($brands))
-                                            @foreach($brands as $brand)
-                                            <option value="{{ $brand->id }}">{{ $brand->name }}</option>
-                                            @endforeach
-                                            @endif
-                                        </select>
+                                        <div class="form-group col-4">
+                                            <label>Brand Name</label>
+                                            <!--end::Label-->
+                                            <select class="form-control" name="brand_id">
+                                                <option value="">--Select Brand --</option>
+                                                @if(!empty($brands))
+                                                    @foreach($brands as $brand)
+                                                        <option value="{{ $brand->id }}">{{ $brand->title }}</option>
+                                                    @endforeach
+                                                @endif
+                                            </select>
 
-                                        <div class="fv-plugins-message-container invalid-feedback"></div>
-                                    </div>
-
+                                            <div class="fv-plugins-message-container invalid-feedback"></div>
+                                        </div>
 
 
-                                    <div class="form-group col-4">
-                                        <label>Category</label>
-                                        <!--end::Label-->
-                                        <select class="form-control" name="category_id" required="">
-                                            <option value="">--Select Category --</option>
-                                            @if(!empty($categories))
-                                            @foreach($categories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                            @endforeach
-                                            @endif
-                                        </select>
+                                        <div class="form-group col-4">
+                                            <label>Category</label>
+                                            <!--end::Label-->
+                                            <select class="form-control" name="category_id">
+                                                <option value="">--Select Category --</option>
+                                                @if(!empty($categories))
+                                                    @foreach($categories as $category)
+                                                        <option
+                                                            value="{{ $category->id }}">{{ $category->title }}</option>
+                                                    @endforeach
+                                                @endif
+                                            </select>
 
-                                        <div class="fv-plugins-message-container invalid-feedback"></div>
-                                    </div>
+                                            <div class="fv-plugins-message-container invalid-feedback"></div>
+                                        </div>
 
-                                     <div class="form-group col-4">
+                                        <div class="form-group col-4">
                                             <label>Description</label>
-                                            <textarea type="text" class="form-control" id="description" name="description">
+                                            <textarea type="text" class="form-control" id="description"
+                                                      name="description">
                                             </textarea>
                                         </div>
 
 
-                                       <div class="form-group col-4">
+                                        <div class="form-group col-4">
                                             <label>Price</label>
-                                            <input type="text" class="form-control numbersOnly" id="price" name="price" maxlength="10"  
+                                            <input type="text" class="form-control numbersOnly" id="price" name="price"
+                                                   maxlength="10"
                                                    onkeypress="return isNumber(event)"/>
                                             @foreach($errors->get('price') as $eroor)
                                                 <span class="help-block">{{ $error}}</span>
@@ -83,9 +85,10 @@
                                         </div>
 
 
-                                         <div class="form-group col-4">
+                                        <div class="form-group col-4">
                                             <label>Discount Price</label>
-                                            <input type="text" class="form-control numbersOnly" id="discountprice" name="discountprice" maxlength="10"  
+                                            <input type="text" class="form-control numbersOnly" id="discountprice"
+                                                   name="discountprice" maxlength="10"
                                                    onkeypress="return isNumber(event)"/>
                                             @foreach($errors->get('discountprice') as $eroor)
                                                 <span class="help-block">{{ $error}}</span>
@@ -95,140 +98,185 @@
 
 
                                         <div class="form-group col-4">
-                                        <label>Discount Valid From</label>
-                                        <input type="date" class="form-control" id="discountvalidfrom" name="discountvalidfrom">
+                                            <label>Discount Valid From</label>
+                                            <input type="date" class="form-control" id="discountvalidfrom"
+                                                   name="discountvalidfrom">
 
-                                    </div>
+                                        </div>
 
-                                         <div class="form-group col-4">
-                                        <label>Discount Valid To</label>
-                                        <input type="date" class="form-control" id="discountvalidto" name="discountvalidto">
+                                        <div class="form-group col-4">
+                                            <label>Discount Valid To</label>
+                                            <input type="date" class="form-control" id="discountvalidto"
+                                                   name="discountvalidto">
 
-                                    </div>
+                                        </div>
 
 
-
-                                    <div class="form-group col-4">
-                                        <label>Product Image </label>
-                                        <input type="file" class="form-control" id="image" name="image"
-                                        accept="image/*">
-                                    </div>
+                                        <div class="form-group col-4">
+                                            <label>Product Image </label>
+                                            <input type="file" class="form-control" id="image" name="image"
+                                                   accept="image/*">
+                                        </div>
 
 
                                         <div class="form-group col-3">
-                                        <label>Tax </label>
-                                        <!--end::Label-->
-                                        <select class="form-control" name="tax_id" required="">
-                                            <option value="">--Select Tax --</option>
-                                            @if(!empty($taxss))
-                                            @foreach($taxss as $tax)
-                                            <option value="{{ $tax->id }}">{{ $tax->name }}</option>
-                                            @endforeach
-                                            @endif
-                                        </select>
+                                            <label>Tax </label>
+                                            <!--end::Label-->
+                                            <select class="form-control" name="tax_id">
+                                                <option value="">--Select Tax --</option>
+                                                @if(!empty($taxss))
+                                                    @foreach($taxss as $tax)
+                                                        <option value="{{ $tax->id }}">{{ $tax->name }}</option>
+                                                    @endforeach
+                                                @endif
+                                            </select>
 
-                                        <div class="fv-plugins-message-container invalid-feedback"></div>
-                                    </div>
-
-                                     <div class="form-group col-3">
-                                        <label>Shop Name </label>
-                                        <!--end::Label-->
-                                        <select class="form-control" name="tax_id" required="">
-                                            <option value="">--Select Shop --</option>
-                                            @if(!empty($shops))
-                                            @foreach($shops as $shop)
-                                            <option value="{{ $shop->id }}">{{ $shop->name }}</option>
-                                            @endforeach
-                                            @endif
-                                        </select>
-
-                                        <div class="fv-plugins-message-container invalid-feedback"></div>
-                                    </div>
-
-
-
-                                      <div class="form-group col-3">
-                                        <label for="title">Trending</label>
-                                        <select class="form-control " name="trending">
-                                        <option value="latest">latest</option>
-                                        <option value="featured">featured</option>
-                                         </select>
+                                            <div class="fv-plugins-message-container invalid-feedback"></div>
                                         </div>
 
-                                         <div class="form-group col-3">
-                                        <label for="title">Pricetype</label>
-                                        <select class="form-control " name="pricetype">
-                                        <option value="online">online</option>
-                                        <option value="offline">offline</option>
-                                         </select>
+                                        <div class="form-group col-3">
+                                            <label>Shop Name </label>
+                                            <!--end::Label-->
+                                            <select class="form-control" name="shop_id">
+                                                <option value="">--Select Shop --</option>
+                                                @if(!empty($shops))
+                                                    @foreach($shops as $shop)
+                                                        <option
+                                                            value="{{ $shop->id }}">{{ $shop->name .'  [ '. $shop->ownername.' ]'  }}</option>
+                                                    @endforeach
+                                                @endif
+                                            </select>
+
+                                            <div class="fv-plugins-message-container invalid-feedback"></div>
                                         </div>
 
+
+                                        <div class="form-group col-3">
+                                            <label for="title">Trending</label>
+                                            <select class="form-control " name="trending">
+                                                <option value="latest">latest</option>
+                                                <option value="featured">featured</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group col-3">
+                                            <label for="title">Pricetype</label>
+                                            <select class="form-control " name="pricetype">
+                                                <option value="fixed">Fixed</option>
+                                                <option value="percent">Percent</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12  text-center form-group">
+                                        <button type="submit" class="btn btn-primary submit">Save</button>
+
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-12  text-center form-group">
-                                    <button type="submit" class="btn btn-primary submit">Save</button>
 
-                                </div>
-                            </div>
-                        </div>
-
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
+
         </div>
-
     </div>
-</div>
 
 
-<script>
+    <script>
 
-    $(document).ready(function () {
-        $(".productsFrm").validate({
-            rules:
-            {
-                name:
-                {
-                    required: true
+        $(document).ready(function () {
+            $(".productsFrm").validate({
+                rules:
+                    {
+                        name:
+                            {
+                                required: true
+                            },
+                        brand_id:
+                            {
+                                required: true
+                            },
+                        category_id:
+                            {
+                                required: true
+                            },
+                        description:
+                            {
+                                required: true
+                            },
+                        image:
+                            {
+                                required: true
+                            },
+
+                        price:
+                            {
+                                required: true
+                            },
+                        shop_id:
+                            {
+                                required: true
+                            },
+
+                    },
+                messages:
+                    {
+                        name:
+                            {
+                                required: "Name is required"
+                            },
+                        image:
+                            {
+                                required: "Imageis required"
+                            },
+
+                        brand_id:
+                            {
+                                required: 'Select Brand'
+                            },
+                        category_id:
+                            {
+                                required: 'Select Category'
+                            },
+                        description:
+                            {
+                                required: 'Description is required'
+                            },
+
+                        price:
+                            {
+                                required: 'Price is required'
+                            },
+                        shop_id:
+                            {
+                                required: 'Select Shop'
+                            },
+
+
+                    },
+                highlight: function (element) {
+                    $(element).closest('.form-group').addClass('has-error');
+                    $('.help-block').css('color', 'red');
                 },
-                image:
-                {
-                    required: true
+                unhighlight: function (element) {
+                    $(element).closest('.form-group').removeClass('has-error');
                 },
-
-            },
-            messages:
-            {
-                name:
-                {
-                    required: "Name is required"
-                },
-                image:
-                {
-                    required: "Imageis required"
-                },
-
-            },
-            highlight: function (element) {
-                $(element).closest('.form-group').addClass('has-error');
-                $('.help-block').css('color', 'red');
-            },
-            unhighlight: function (element) {
-                $(element).closest('.form-group').removeClass('has-error');
-            },
-            errorElement: 'span',
-            errorClass: 'help-block',
-            errorPlacement: function (error, element) {
-                if (element.parent('.input-group').length) {
-                    error.insertAfter(element.parent());
-                } else {
-                    error.insertAfter(element);
+                errorElement: 'span',
+                errorClass: 'help-block',
+                errorPlacement: function (error, element) {
+                    if (element.parent('.input-group').length) {
+                        error.insertAfter(element.parent());
+                    } else {
+                        error.insertAfter(element);
+                    }
                 }
-            }
-        });
+            });
 
-        $(".submit").click(function (event) {
+            $(".submit").click(function (event) {
                 // alert('he');
                 event.preventDefault();
                 if ($(".productsFrm").valid()) {
@@ -267,9 +315,9 @@
                 }
             });
 
-    });
-</script>
-<script>
+        });
+    </script>
+    <script>
         function isNumber(evt) {
             evt = (evt) ? evt : window.event;
             var charCode = (evt.which) ? evt.which : evt.keyCode;
@@ -278,6 +326,6 @@
             }
             return true;
         }
-   </script>
+    </script>
 @stop
 
