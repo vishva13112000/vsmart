@@ -8,7 +8,7 @@
                 <div class="kt-portlet__head kt-portlet__head--lg">
                     <div class="kt-portlet__head-label">
                         <h3 class="kt-portlet__head-title">
-
+                            Shop Category
                         </h3>
                     </div>
                     <div class="kt-portlet__head-toolbar">
@@ -17,7 +17,7 @@
                                 <a href="{{route('admin.shopcategory.create')}}"
                                    class="btn btn-brand btn-elevate btn-icon-sm">
                                     <i class="la la-plus"></i>
-                                    Add
+                                    Add Shop Category
                                 </a>
                             </div>
                         </div>
@@ -58,12 +58,12 @@
                                                 <button class="btn btn-success unassign ladda-button" data-style="slide-left" id="remove" url="{{route('admin.shopcategory.unassigned')}}" ruid="{{ $shopcategory->id }}"  type="button" style="height:28px; padding:0 12px"><span class="ladda-label">Active</span> </button>
                                             </div>
                                             <div class="btn-group-horizontal" id="assign_add_{{ $shopcategory->id }}"  style="display: none"  >
-                                                <button class="btn btn-danger assign ladda-button" data-style="slide-left" id="assign" uid="{{ $shopcategory->id }}" url="{{route('admin.shopcategory.assign')}}" type="button"  style="height:28px; padding:0 12px"><span class="ladda-label">Inactive</span></button>
+                                                <button class="btn btn-warning assign ladda-button" data-style="slide-left" id="assign" uid="{{ $shopcategory->id }}" url="{{route('admin.shopcategory.assign')}}" type="button"  style="height:28px; padding:0 12px"><span class="ladda-label">Inactive</span></button>
                                             </div>
                                         @endif
                                         @if($shopcategory->active == 0)
                                             <div class="btn-group-horizontal" id="assign_add_{{ $shopcategory->id }}" >
-                                                <button class="btn btn-danger assign ladda-button" id="assign" data-style="slide-left" uid="{{ $shopcategory->id }}" url="{{route('admin.shopcategory.assign')}}"  type="button" style="height:28px; padding:0 12px"><span class="ladda-label">Inactive</span></button>
+                                                <button class="btn btn-warning assign ladda-button" id="assign" data-style="slide-left" uid="{{ $shopcategory->id }}" url="{{route('admin.shopcategory.assign')}}"  type="button" style="height:28px; padding:0 12px"><span class="ladda-label">Inactive</span></button>
                                             </div>
                                             <div class="btn-group-horizontal" id="assign_remove_{{ $shopcategory->id }}" style="display: none" >
                                                 <button class="btn  btn-success unassign ladda-button" id="remove" ruid="{{ $shopcategory->id }}" data-style="slide-left" url="{{route('admin.shopcategory.unassigned')}}" type="button" style="height:28px; padding:0 12px"><span class="ladda-label">Active</span></button>

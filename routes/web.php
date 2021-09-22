@@ -30,7 +30,7 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 Route::group(['prefix' => 'employee'], function () {
-  Route::get('/login', 'EmployeeAuth\LoginController@showLoginForm')->name('login');
+  Route::get('/login', 'EmployeeAuth\LoginController@showLoginForm')->name('employee.login');
   Route::post('/login', 'EmployeeAuth\LoginController@login');
   Route::post('/logout', 'EmployeeAuth\LoginController@logout')->name('logout');
 
@@ -46,7 +46,7 @@ Route::group(['prefix' => 'employee'], function () {
 
 
 Route::group(['prefix' => 'shop'], function () {
-  Route::get('/login', 'ShopAuth\LoginController@showLoginForm')->name('login');
+  Route::get('/login', 'ShopAuth\LoginController@showLoginForm')->name('shop.login');
   Route::post('/login', 'ShopAuth\LoginController@login');
   Route::post('/logout', 'ShopAuth\LoginController@logout')->name('logout');
 
@@ -57,4 +57,18 @@ Route::group(['prefix' => 'shop'], function () {
   Route::post('/password/reset', 'ShopAuth\ResetPasswordController@reset')->name('password.email');
   Route::get('/password/reset', 'ShopAuth\ForgotPasswordController@showLinkRequestForm')->name('password.reset');
   Route::get('/password/reset/{token}', 'ShopAuth\ResetPasswordController@showResetForm');
+});
+
+Route::group(['prefix' => 'deliveryman'], function () {
+  Route::get('/login', 'DeliverymanAuth\LoginController@showLoginForm')->name('login');
+  Route::post('/login', 'DeliverymanAuth\LoginController@login');
+  Route::post('/logout', 'DeliverymanAuth\LoginController@logout')->name('logout');
+
+  Route::get('/register', 'DeliverymanAuth\RegisterController@showRegistrationForm')->name('register');
+  Route::post('/register', 'DeliverymanAuth\RegisterController@register');
+
+  Route::post('/password/email', 'DeliverymanAuth\ForgotPasswordController@sendResetLinkEmail')->name('password.request');
+  Route::post('/password/reset', 'DeliverymanAuth\ResetPasswordController@reset')->name('password.email');
+  Route::get('/password/reset', 'DeliverymanAuth\ForgotPasswordController@showLinkRequestForm')->name('password.reset');
+  Route::get('/password/reset/{token}', 'DeliverymanAuth\ResetPasswordController@showResetForm');
 });

@@ -8,7 +8,7 @@
                 <div class="kt-portlet__head kt-portlet__head--lg">
                     <div class="kt-portlet__head-label">
                         <h3 class="kt-portlet__head-title">
-
+                            Products
                         </h3>
                     </div>
                     <div class="kt-portlet__head-toolbar">
@@ -46,6 +46,7 @@
                                 <th>Category Name</th>
                                 <th>Description</th>
                                 <th>Price</th>
+                                <th>Stock</th>
                                 <th>Status</th>
                                 <th>Action</th>
 
@@ -56,7 +57,7 @@
                                 <tr>
                                     <td><input type="checkbox" name="single[{{$product->id}}]"
                                                data-id="{{$product->id}}"
-                                               class="form-control custom-checkbox singleselect" style="height: 15px;"
+                                               class="form-control custom-checkbox singleselect" style="height: 15px;">
                                     </td>
                                     <td>{{$product->id}}</td>
                                     <td>{{$product->name}}</td>
@@ -64,7 +65,13 @@
                                     <td>{{$product->category->title}}</td>
                                     <td>{{$product->description}}</td>
                                     <td>{{$product->price}}</td>
+                                    <td>
+                                        <a class="btn btn-sm btn-info text-white" href="{{Route('admin.products.inventory',$product->id)}}"><i class="fas-fa-inventory"> Stock</i></a>
+                                    </td>
+                               <!--      <td>
+                                        <button type="button" data-id="{{ $product->id }}" data-token="{{ csrf_token() }}"  class="btn badge-info modalopen" data-toggle="modal" data-target="#modal-xl"><i class="fa fa-plus"></i> Add Stock</button>
 
+                                    </td> -->
                                     <td>
                                         @if($product->active == 1)
                                             <div class="btn-group-horizontal" id="assign_remove_{{$product->id }}">
@@ -106,11 +113,11 @@
                                         <a class="btn waves-effect waves-light btn-primary"
                                            href="{{route('admin.products.edit',$product->id)}}"><i
                                                 class="fa fa-pen   "></i></a>
-
+<!-- 
                                         <button data-id="{{$product->id }}" class="btn btn-dark vishbaby"
                                                 title="amount" type="button"><i class="fa fa-info-circle"></i></button>
 
-
+ -->
                                     </td>
                                 </tr>
                             @endforeach
@@ -230,6 +237,54 @@
 
                 });
             </script>
+
+<script>
+        // $('.modalopen').click(function(){
+        //     var id = $(this).data("id");
+        //     $('.modal-body p').text("");
+        //     $('.modal-body p').text(id);
+        // });
+        $('.assign').click(function(){
+
+            var user_id = $(this).attr('uid');
+            var url = $(this).attr('url');
+
+            $.ajax({
+                url: url,
+                type: "POST",
+                data: {
+                    id: user_id,
+                    _token: '{{ csrf_token() }}'
+                },
+                cache: false,
+                dataType: 'json',
+                success: function(data){
+                    $('#assign_remove_'+user_id).show();
+                    $('#assign_add_'+user_id).hide();
+                }
+            });
+        });
+        $('.unassign').click(function(){
+            var user_id = $(this).attr('ruid');
+            var url = $(this).attr('url');
+
+
+            $.ajax({
+                url: url,
+                type: "PUT",
+                data: {
+                    id: user_id,
+                    _token: '{{ csrf_token() }}'
+                },
+                cache: false,
+                dataType: 'json',
+                success: function(data){
+                    $('#assign_remove_'+user_id).hide();
+                    $('#assign_add_'+user_id).show();
+                }
+            });
+        });
+</script>
 @stop
 
 

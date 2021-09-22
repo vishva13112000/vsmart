@@ -8,7 +8,7 @@
                 <div class="kt-portlet__head kt-portlet__head--lg">
                     <div class="kt-portlet__head-label">
                         <h3 class="kt-portlet__head-title">
-
+                            Subscription
                         </h3>
                     </div>
                     <div class="kt-portlet__head-toolbar">
@@ -67,12 +67,12 @@
                                                 <button class="btn btn-success unassign ladda-button" data-style="slide-left" id="remove" url="{{route('admin.subscription.unassigned')}}" ruid="{{ $subscription->id }}"  type="button" style="height:28px; padding:0 12px"><span class="ladda-label">Active</span> </button>
                                             </div>
                                             <div class="btn-group-horizontal" id="assign_add_{{ $subscription->id }}"  style="display: none"  >
-                                                <button class="btn btn-danger assign ladda-button" data-style="slide-left" id="assign" uid="{{ $subscription->id }}" url="{{route('admin.subscription.assign')}}" type="button"  style="height:28px; padding:0 12px"><span class="ladda-label">Inactive</span></button>
+                                                <button class="btn btn-warning assign ladda-button" data-style="slide-left" id="assign" uid="{{ $subscription->id }}" url="{{route('admin.subscription.assign')}}" type="button"  style="height:28px; padding:0 12px"><span class="ladda-label">Inactive</span></button>
                                             </div>
                                         @endif
                                         @if($subscription->active == 0)
                                             <div class="btn-group-horizontal" id="assign_add_{{ $subscription->id }}" >
-                                                <button class="btn btn-danger assign ladda-button" id="assign" data-style="slide-left" uid="{{ $subscription->id }}" url="{{route('admin.subscription.assign')}}"  type="button" style="height:28px; padding:0 12px"><span class="ladda-label">Inactive</span></button>
+                                                <button class="btn btn-warning assign ladda-button" id="assign" data-style="slide-left" uid="{{ $subscription->id }}" url="{{route('admin.subscription.assign')}}"  type="button" style="height:28px; padding:0 12px"><span class="ladda-label">Inactive</span></button>
                                             </div>
                                             <div class="btn-group-horizontal" id="assign_remove_{{ $subscription->id }}" style="display: none" >
                                                 <button class="btn  btn-success unassign ladda-button" id="remove" ruid="{{ $subscription->id }}" data-style="slide-left" url="{{route('admin.subscription.unassigned')}}" type="button" style="height:28px; padding:0 12px"><span class="ladda-label">Active</span></button>

@@ -8,7 +8,7 @@
                 <div class="kt-portlet__head kt-portlet__head--lg">
                     <div class="kt-portlet__head-label">
                         <h3 class="kt-portlet__head-title">
-
+                            Brands
                         </h3>
                     </div>
                     <div class="kt-portlet__head-toolbar">
@@ -58,12 +58,12 @@
                                                 <button class="btn btn-success unassign ladda-button" data-style="slide-left" id="remove" url="{{route('admin.brands.unassigned')}}" ruid="{{ $brands->id }}"  type="button" style="height:28px; padding:0 12px"><span class="ladda-label">Active</span> </button>
                                             </div>
                                             <div class="btn-group-horizontal" id="assign_add_{{ $brands->id }}"  style="display: none"  >
-                                                <button class="btn btn-danger assign ladda-button" data-style="slide-left" id="assign" uid="{{ $brands->id }}" url="{{route('admin.brands.assign')}}" type="button"  style="height:28px; padding:0 12px"><span class="ladda-label">Inactive</span></button>
+                                                <button class="btn btn-warning assign ladda-button" data-style="slide-left" id="assign" uid="{{ $brands->id }}" url="{{route('admin.brands.assign')}}" type="button"  style="height:28px; padding:0 12px"><span class="ladda-label">Inactive</span></button>
                                             </div>
                                         @endif
                                         @if($brands->active == 0)
                                             <div class="btn-group-horizontal" id="assign_add_{{ $brands->id }}" >
-                                                <button class="btn btn-danger assign ladda-button" id="assign" data-style="slide-left" uid="{{ $brands->id }}" url="{{route('admin.brands.assign')}}"  type="button" style="height:28px; padding:0 12px"><span class="ladda-label">Inactive</span></button>
+                                                <button class="btn btn-warning assign ladda-button" id="assign" data-style="slide-left" uid="{{ $brands->id }}" url="{{route('admin.brands.assign')}}"  type="button" style="height:28px; padding:0 12px"><span class="ladda-label">Inactive</span></button>
                                             </div>
                                             <div class="btn-group-horizontal" id="assign_remove_{{ $brands->id }}" style="display: none" >
                                                 <button class="btn  btn-success unassign ladda-button" id="remove" ruid="{{ $brands->id }}" data-style="slide-left" url="{{route('admin.brands.unassigned')}}" type="button" style="height:28px; padding:0 12px"><span class="ladda-label">Active</span></button>

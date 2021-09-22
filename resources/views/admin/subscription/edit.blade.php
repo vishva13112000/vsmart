@@ -78,7 +78,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12  text-center form-group">
-                                        <button type="submit" class="btn btn-primary submit">Save</button>
+                                        <button type="submit" class="btn btn-primary submit">Edit</button>
 
                                     </div>
                                 </div>

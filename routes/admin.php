@@ -72,6 +72,15 @@ Route::group(['prefix' => 'products'], function () {
     Route::post('/deleteall', 'AdminAuth\ProductsController@deleteall')->name('products.deleteall');
     Route::any('/unassigned', 'AdminAuth\ProductsController@unassigned')->name('products.unassigned');
     Route::any('/assign', 'AdminAuth\ProductsController@assign')->name('products.assign');
+    Route::get('/add/stock/{id}', 'AdminAuth\InventoryController@inventory')->name('products.inventory');
+
+});
+
+Route::group(['prefix' => 'inventory'], function () {
+    Route::post('/store', 'AdminAuth\InventoryController@store')->name('inventory.store');
+    Route::post('/update', 'AdminAuth\InventoryController@update')->name('inventory.update');
+    Route::delete('/delete', 'AdminAuth\InventoryController@delete')->name('inventory.delete');
+
 });
 
 
@@ -85,4 +94,36 @@ Route::group(['prefix' => 'shop'], function () {
     Route::post('/deleteall', 'AdminAuth\ShopController@deleteall')->name('shop.deleteall');
     Route::any('/unassigned', 'AdminAuth\ShopController@unassigned')->name('shop.unassigned');
     Route::any('/assign', 'AdminAuth\ShopController@assign')->name('shop.assign');
+    Route::get('/add/deliveryman/{id}', 'AdminAuth\DeliverymanController@delivery')->name('shop.delivery');
+
 });
+
+Route::group(['prefix' => 'deliveryman'], function () {
+    Route::get('/index', 'AdminAuth\DeliverymanController@index')->name('deliveryman.index');
+    Route::get('/create', 'AdminAuth\DeliverymanController@create')->name('deliveryman.create');
+    Route::post('/store', 'AdminAuth\DeliverymanController@store')->name('deliveryman.store');
+    Route::get('/edit/{id}', 'AdminAuth\DeliverymanController@edit')->name('deliveryman.edit');
+    Route::post('/update', 'AdminAuth\DeliverymanController@update')->name('deliveryman.update');
+    Route::post('/delete', 'AdminAuth\DeliverymanController@delete')->name('deliveryman.delete');
+    Route::post('/deleteall', 'AdminAuth\DeliverymanController@deleteall')->name('deliveryman.deleteall');
+    Route::any('/unassigned', 'AdminAuth\DeliverymanController@unassigned')->name('deliveryman.unassigned');
+    Route::any('/assign', 'AdminAuth\DeliverymanController@assign')->name('deliveryman.assign');
+
+});
+
+
+Route::group(['prefix' => 'producttype'], function () {
+    Route::get('/index', 'AdminAuth\ProductTypeController@index')->name('producttype.index');
+    Route::get('/create', 'AdminAuth\ProductTypeController@create')->name('producttype.create');
+    Route::post('/store', 'AdminAuth\ProductTypeController@store')->name('producttype.store');
+    Route::get('/edit/{id}', 'AdminAuth\ProductTypeController@edit')->name('producttype.edit');
+    Route::post('/update', 'AdminAuth\ProductTypeController@update')->name('producttype.update');
+    Route::post('/delete', 'AdminAuth\ProductTypeController@delete')->name('producttype.delete');
+    Route::post('/deleteall', 'AdminAuth\ProductTypeController@deleteall')->name('producttype.deleteall');
+    Route::any('/unassigned', 'AdminAuth\ProductTypeController@unassigned')->name('producttype.unassigned');
+    Route::any('/assign', 'AdminAuth\ProductTypeController@assign')->name('producttype.assign');
+});
+
+
+
+

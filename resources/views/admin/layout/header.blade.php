@@ -75,7 +75,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 
     <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700">
+    href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700">
 
 
     <link href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" rel="stylesheet">
@@ -90,14 +90,14 @@ License: You must have a valid license purchased only from themeforest(the above
 
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.0.2/css/responsive.dataTables.min.css" /> -->
 
-{{--    <link href="{{asset('assets/plugins/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css"/>--}}
+    {{--    <link href="{{asset('assets/plugins/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css"/>--}}
 
 
     <!--begin::Page Vendors Styles(used by this page) -->
 
 
     <link href="{{ asset('/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css') }}" rel="stylesheet"
-          type="text/css"/>
+    type="text/css"/>
 
 
     <!--end::Page Vendors Styles -->
@@ -116,39 +116,39 @@ License: You must have a valid license purchased only from themeforest(the above
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <style type="text/css">
-        .toast.toast-success {
-            background: #4eff1c;
-        }
+    .toast.toast-success {
+        background: #4eff1c;
+    }
 
-        .toast.toast-warning {
-            background: red;
-        }
+    .toast.toast-warning {
+        background: red;
+    }
 
-        .toast.toast-error {
-            background: #808000;
-        }
-    </style>
-
-
-    <!--end::Global Theme Styles -->
+    .toast.toast-error {
+        background: #808000;
+    }
+</style>
 
 
-    <script src="{{ asset('/assets/plugins/global/plugins.bundle.js') }}" type="text/javascript"></script>
+<!--end::Global Theme Styles -->
 
 
-    <script src="{{ asset('/assets/js/scripts.bundle.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/assets/plugins/global/plugins.bundle.js') }}" type="text/javascript"></script>
 
 
-    <!--begin::Layout Skins(used by all pages) -->
+<script src="{{ asset('/assets/js/scripts.bundle.js') }}" type="text/javascript"></script>
 
 
-    <!--end::Layout Skins -->
+<!--begin::Layout Skins(used by all pages) -->
 
 
-    <link rel="shortcut icon" href="{{asset('assets/media/logos/icon.png')}}"/>
+<!--end::Layout Skins -->
 
 
-    @stack('styles')
+<link rel="shortcut icon" href="{{asset('assets/media/logos/icon.png')}}"/>
+
+
+@stack('styles')
 
 
 </head>
@@ -161,7 +161,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 
 <body
-    class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-aside--minimize kt-page--loading">
+class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-aside--minimize kt-page--loading">
 
 
 <!-- begin:: Page -->
@@ -192,39 +192,39 @@ License: You must have a valid license purchased only from themeforest(the above
 
 
         <div class="kt-header-mobile__toolbar-toggler kt-header-mobile__toolbar-toggler--left"
-             id="kt_aside_mobile_toggler"><span></span></div>
+        id="kt_aside_mobile_toggler"><span></span></div>
 
 
         <div class="kt-header-mobile__toolbar-toggler" id="kt_header_mobile_toggler"><span></span></div>
 
 
         <div class="kt-header-mobile__toolbar-topbar-toggler" id="kt_header_mobile_topbar_toggler"><i
-                class="flaticon-more"></i></div>
+            class="flaticon-more"></i></div>
+
+
+        </div>
 
 
     </div>
 
 
-</div>
+    <!-- end:: Header Mobile -->
 
 
-<!-- end:: Header Mobile -->
+    <div class="kt-grid kt-grid--hor kt-grid--root">
 
 
-<div class="kt-grid kt-grid--hor kt-grid--root">
+        <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
 
 
-    <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
+            <!-- begin:: Aside -->
 
 
-        <!-- begin:: Aside -->
+            <button class="kt-aside-close " id="kt_aside_close_btn"><i class="la la-close"></i></button>
 
 
-        <button class="kt-aside-close " id="kt_aside_close_btn"><i class="la la-close"></i></button>
-
-
-        <div class="kt-aside  kt-aside--fixed  kt-grid__item kt-grid kt-grid--desktop kt-grid--hor-desktop"
-             id="kt_aside">
+            <div class="kt-aside  kt-aside--fixed  kt-grid__item kt-grid kt-grid--desktop kt-grid--hor-desktop"
+            id="kt_aside">
 
 
             <!-- begin:: Aside Menu -->
@@ -234,163 +234,178 @@ License: You must have a valid license purchased only from themeforest(the above
 
 
                 <div id="kt_aside_menu" class="kt-aside-menu " data-ktmenu-vertical="1" data-ktmenu-scroll="1"
-                     data-ktmenu-dropdown-timeout="500">
+                data-ktmenu-dropdown-timeout="500">
 
 
-                    <ul class="kt-menu__nav ">
+                <ul class="kt-menu__nav ">
 
 
-                        @if(Auth::guard('admin')->check())
+                    @if(Auth::guard('admin')->check())
 
-                            <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a href="{{route('admin.home')}}"
-                                                                                                     class="kt-menu__link "><i
-                                        class="kt-menu__link-icon fas fa-file"></i><span class="kt-menu__link-text">Dashboard</span></a>
-                            </li>
-                            <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true">
-                                <a href="{{route('admin.shopcategory.index')}}"
-                                                                                                     class="kt-menu__link "><i
-                                        class="kt-menu__link-icon fa fa-users"></i><span
-                                        class="kt-menu__link-text">Shop Category</span></a></li>
+                    <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a href="{{route('admin.home')}}"
+                       class="kt-menu__link "><i
+                       class="kt-menu__link-icon fas fa-file"></i><span class="kt-menu__link-text">Dashboard</span></a>
+                   </li>
+                   <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true">
+                    <a href="{{route('admin.shopcategory.index')}}"
+                    class="kt-menu__link "><i
+                    class="kt-menu__link-icon fa fa-users"></i><span
+                    class="kt-menu__link-text">Shop Category</span></a></li>
                               <!--    <a href="#"
                                                                                                      class="kt-menu__link "><i
                                         class="kt-menu__link-icon fa fa-users"></i><span
                                         class="kt-menu__link-text">Shop</span></a></li> -->
 
-                                <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true">
-                                <a href="{{route('admin.subscription.index')}}"
-                                                                                                     class="kt-menu__link "><i
-                                        class="kt-menu__link-icon fa fa-list"></i><span
-                                        class="kt-menu__link-text">Subscription</span></a></li>
+                                        <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true">
+                                            <a href="{{route('admin.subscription.index')}}"
+                                            class="kt-menu__link "><i
+                                            class="kt-menu__link-icon fa fa-list"></i><span
+                                            class="kt-menu__link-text">Subscription</span></a></li>
 
-                                 <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true">
-                                <a href="{{route('admin.brands.index')}}"
-                                                                                                     class="kt-menu__link "><i
-                                        class="kt-menu__link-icon fab fa-adn"></i><span
-                                        class="kt-menu__link-text">Brands</span></a></li>
+                                            <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true">
+                                                <a href="{{route('admin.brands.index')}}"
+                                                class="kt-menu__link "><i
+                                                class="kt-menu__link-icon fab fa-adn"></i><span
+                                                class="kt-menu__link-text">Brands</span></a></li>
 
-                                   <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true">
-                                <a href="{{route('admin.category.index')}}"
-                                                                                                     class="kt-menu__link "><i
-                                        class="kt-menu__link-icon fa fa-list"></i><span
-                                        class="kt-menu__link-text">Category</span></a></li>
+                                                <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true">
+                                                    <a href="{{route('admin.category.index')}}"
+                                                    class="kt-menu__link "><i
+                                                    class="kt-menu__link-icon fa fa-list"></i><span
+                                                    class="kt-menu__link-text">Category</span></a></li>
 
 
-                                   <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true">
-                                <a href="{{route('admin.products.index')}}"
-                                                                                                     class="kt-menu__link "><i
-                                        class="kt-menu__link-icon fab fa-product-hunt"></i><span
-                                        class="kt-menu__link-text">Product</span></a></li>
+                                                    <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true">
+                                                        <a href="{{route('admin.products.index')}}"
+                                                        class="kt-menu__link "><i
+                                                        class="kt-menu__link-icon fab fa-product-hunt"></i><span
+                                                        class="kt-menu__link-text">Product</span></a></li>
 
-                                   <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true">
-                                <a href="{{route('admin.shop.index')}}"
-                                                                                                     class="kt-menu__link "><i
-                                        class="kt-menu__link-icon fa fa-users"></i><span
-                                        class="kt-menu__link-text">Shop</span></a></li>
 
+                                                        <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true">
+                                                            <a href="{{route('admin.shop.index')}}"
+                                                            class="kt-menu__link "><i
+                                                            class="kt-menu__link-icon fa fa-users"></i><span
+                                                            class="kt-menu__link-text">Shop</span></a></li>
 
+                                                            <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true">
+                                                                <a href="{{route('admin.producttype.index')}}"
+                                                                class="kt-menu__link "><i
+                                                                class="kt-menu__link-icon fa fa-users"></i><span
+                                                                class="kt-menu__link-text">Product Type</span></a></li>
 
 
-                        @endif
+                                                            <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true">
+                                                            <a href="{{route('admin.deliveryman.index')}}"
+                                                            class="kt-menu__link "><i class="kt-menu__link-icon fas fa-shipping-fast"></i><span
+                                                            class="kt-menu__link-text">Delivery Man</span></a></li>
 
 
+                                                                
 
-                    </ul>
 
 
-                </div>
+                                                                @endif
 
 
-            </div>
 
+                                                            </ul>
 
-            <!-- end:: Aside Menu -->
 
+                                                        </div>
 
-        </div>
 
+                                                    </div>
 
-        <!-- end:: Aside -->
 
+                                                    <!-- end:: Aside Menu -->
 
-        <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
 
+                                                </div>
 
-            <!-- begin:: Header -->
 
+                                                <!-- end:: Aside -->
 
-            <div id="kt_header" class="kt-header kt-grid kt-grid--ver  kt-header--fixed ">
 
+                                                <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
 
-                <!-- begin:: Aside -->
 
+                                                    <!-- begin:: Header -->
 
-                <div class="kt-header__brand kt-grid__item  " id="kt_header_brand">
 
+                                                    <div id="kt_header" class="kt-header kt-grid kt-grid--ver  kt-header--fixed ">
 
-                    <div class="kt-header__brand-logo">
 
+                                                        <!-- begin:: Aside -->
 
-                        <a href="{{route('admin.home')}}">
 
+                                                        <div class="kt-header__brand kt-grid__item  " id="kt_header_brand">
 
-                            <img alt="Logo" src="{{asset('assets/media/logos/naswiz.png')}}"
-                                 style=" height: 100px; width: 100px;"/>
 
+                                                            <div class="kt-header__brand-logo">
 
-                        </a>
 
+                                                                <a href="{{route('admin.home')}}">
 
-                    </div>
 
+                                                                    <img alt="Logo" src="{{asset('assets/media/logos/naswiz.png')}}"
+                                                                    style=" height: 100px; width: 100px;"/>
 
-                </div>
 
+                                                                </a>
 
-                <!-- end:: Aside -->
 
+                                                            </div>
 
-                <!-- begin:: Title -->
 
+                                                        </div>
 
-                <h3 class="kt-header__title kt-grid__item">
 
-                    <a href="{{route('admin.home')}}" style=" color: #1A73E8;">
+                                                        <!-- end:: Aside -->
 
-                        Vsmart
 
-                    </a>
+                                                        <!-- begin:: Title -->
 
-                </h3>
 
+                                                        <h3 class="kt-header__title kt-grid__item">
 
-                <!-- end:: Title -->
+                                                            <a href="{{route('admin.home')}}" style=" color: #1A73E8;">
 
+                                                                Vsmart
 
-                <!-- begin: Header Menu -->
+                                                            </a>
 
+                                                        </h3>
 
-                <button class="kt-header-menu-wrapper-close" id="kt_header_menu_mobile_close_btn"><i
-                        class="la la-close"></i></button>
 
+                                                        <!-- end:: Title -->
 
-                <div class="kt-header-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_header_menu_wrapper">
 
+                                                        <!-- begin: Header Menu -->
 
-                    <div id="kt_header_menu"
-                         class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout-default ">
 
+                                                        <button class="kt-header-menu-wrapper-close" id="kt_header_menu_mobile_close_btn"><i
+                                                            class="la la-close"></i></button>
 
-                        <ul class="kt-menu__nav ">
 
-                            <li class="kt-menu__item  kt-menu__item--active " aria-haspopup="true"><a
-                                    href="{{route('admin.home')}}" class="kt-menu__link "><span
-                                        class="kt-menu__link-text">Dashboard</span></a></li>
+                                                            <div class="kt-header-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_header_menu_wrapper">
 
-                            <li class="kt-menu__item  kt-menu__item--active " aria-haspopup="true"><a href="#"
-                                                                                                      class="kt-menu__link "><span
-                                        class="kt-menu__link-text">Product</span></a></li>
 
-                        @if(Auth::guard('admin')->check())
+                                                                <div id="kt_header_menu"
+                                                                class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout-default ">
+
+
+                                                                <ul class="kt-menu__nav ">
+
+                                                                    <li class="kt-menu__item  kt-menu__item--active " aria-haspopup="true"><a
+                                                                        href="{{route('admin.home')}}" class="kt-menu__link "><span
+                                                                        class="kt-menu__link-text">Dashboard</span></a></li>
+
+                                                                        <li class="kt-menu__item  kt-menu__item--active " aria-haspopup="true"><a href="#"
+                                                                          class="kt-menu__link "><span
+                                                                          class="kt-menu__link-text">Product</span></a></li>
+
+                                                                          @if(Auth::guard('admin')->check())
 
 
 
@@ -425,41 +440,41 @@ License: You must have a valid license purchased only from themeforest(the above
 
 
 
-                                </li>
+                </li>
 
-                                <li class="kt-menu__item kt-menu__item--active kt-menu__item--submenu kt-menu__item--rel kt-menu__item--open-dropdown"
-                                    data-ktmenu-submenu-toggle="click" aria-haspopup="true"><a href="javascript:;"
-                                                                                               class="kt-menu__link kt-menu__toggle"><span
-                                            class="kt-menu__link-text">Master</span><i
-                                            class="kt-menu__hor-arrow la la-angle-down"></i><i
-                                            class="kt-menu__ver-arrow la la-angle-right"></i></a>
+                <li class="kt-menu__item kt-menu__item--active kt-menu__item--submenu kt-menu__item--rel kt-menu__item--open-dropdown"
+                data-ktmenu-submenu-toggle="click" aria-haspopup="true"><a href="javascript:;"
+                class="kt-menu__link kt-menu__toggle"><span
+                class="kt-menu__link-text">Master</span><i
+                class="kt-menu__hor-arrow la la-angle-down"></i><i
+                class="kt-menu__ver-arrow la la-angle-right"></i></a>
 
-                                    <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
+                <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
 
-                                        <ul class="kt-menu__subnav">
-
-
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="#"
-                                                                                               class="kt-menu__link "><i
-                                                        class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
-                                                        class="kt-menu__link-text">Colors</span></a></li>
+                    <ul class="kt-menu__subnav">
 
 
-                                        </ul>
-
-                                    </div>
-
-                                </li>
-
-                            @endif
-
-                        </ul>
+                        <li class="kt-menu__item " aria-haspopup="true"><a href="#"
+                         class="kt-menu__link "><i
+                         class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
+                         class="kt-menu__link-text">Colors</span></a></li>
 
 
-                    </div>
+                     </ul>
+
+                 </div>
+
+             </li>
+
+             @endif
+
+         </ul>
 
 
-                </div>
+     </div>
 
 
-                <!-- end: Header Menu -->
+ </div>
+
+
+ <!-- end: Header Menu -->

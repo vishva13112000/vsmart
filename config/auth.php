@@ -36,6 +36,11 @@ return [
     */
 
     'guards' => [
+        'deliveryman' => [
+            'driver' => 'session',
+            'provider' => 'deliverymen',
+        ],
+
         'shop' => [
             'driver' => 'session',
             'provider' => 'shops',
@@ -83,6 +88,11 @@ return [
     */
 
     'providers' => [
+        'deliverymen' => [
+            'driver' => 'eloquent',
+            'model' => App\Deliveryman::class,
+        ],
+
         'shops' => [
             'driver' => 'eloquent',
             'model' => App\Shop::class,
@@ -126,6 +136,12 @@ return [
     */
 
     'passwords' => [
+        'deliverymen' => [
+            'provider' => 'deliverymen',
+            'table' => 'deliveryman_password_resets',
+            'expire' => 60,
+        ],
+
         'shops' => [
             'provider' => 'shops',
             'table' => 'shop_password_resets',

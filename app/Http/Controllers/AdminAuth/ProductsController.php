@@ -4,6 +4,7 @@ namespace App\Http\Controllers\AdminAuth;
 
 use App\Models\Products;
 use App\Models\Category;
+use App\Models\Inventory;
 use App\Models\Brands;
 use App\Shop;
 
@@ -151,7 +152,7 @@ class ProductsController extends Controller
     public function unassigned(Request $request)
     {
 //        dd($request->all());
-        $products = Subscriptions::where('id', $request->id)->update(['active' => 0]);
+        $products = Products::where('id', $request->id)->update(['active' => 0]);
         return response()->Json(['status' => 'success']);
     }
 }
