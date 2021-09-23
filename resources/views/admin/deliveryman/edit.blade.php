@@ -15,7 +15,7 @@
                             <div class="kt-portlet__head-toolbar">
                                 <div class="kt-portlet__head-wrapper">
                                     <div class="kt-portlet__head-actions">
-                                        <a href="{{route('admin.deliveryman.index')}}"
+                                        <a href="{{route('admin.deliveryman.index',$deliveryman->shopid)}}"
                                            class="btn btn-success">Back</a>
                                     </div>
                                 </div>
@@ -27,67 +27,48 @@
                             <div class="kt-portlet__foot">
                                 <div class="kt-form__actions">
                                     <div class="row">
+
                                         <div class="form-group col-4">
-                                            <label>Deliveryman Name</label>
-                                             <input type="hidden" class="form-control" id="id" name="id" value="{{$deliveryman->id}}">
-                                            <input type="text" class="form-control" id="name" name="name" value="{{$deliveryman->name}}">
-                                           
+                                            <label>Shop Name</label>
+                                            <input readonly type="text" class="form-control" id="shop_name"
+                                                   value="{{$deliveryman->shop->name}}">
+                                            <input type="hidden" class="form-control" id="shop_id" name="shopid"
+                                                   value="{{$deliveryman->shopid}}">
+
+                                            <input type="hidden" class="form-control" id="id" name="id"
+                                                   value="{{$deliveryman->id}}">
 
                                         </div>
+                                        <div class="form-group col-4">
+                                            <label>DeliveryMan Name</label>
+                                            <input type="text" class="form-control" id="name"   value="{{$deliveryman->name}}"
+                                                   placeholder="Enter DeliveryMan Name" name="name">
 
-                               
+                                        </div>
+                                        <div class="form-group col-4">
+                                            <label>Email</label>
+                                            <input type="email" class="form-control" placeholder="Enter Email"
+                                                   id="email" name="email"   value="{{$deliveryman->email}}">
 
-
-                               <!--          <div class="form-group col-4">
-                                            <label>Description</label>
-                                            <textarea type="text" class="form-control" id="description"
-                                                      name="description">
-                                                {{$product->description}}
+                                        </div>
+                                        <div class="form-group col-4">
+                                            <label>Address</label>
+                                            <textarea class="form-control" placeholder="Enter Address"
+                                                      id="address" name="address">
+                                                {{$deliveryman->address}}
                                             </textarea>
                                         </div>
- -->
-<!-- 
                                         <div class="form-group col-4">
-                                            <label>Price</label>
-                                            <input type="text" class="form-control numbersOnly" id="price" name="price"
-                                                   maxlength="10" value="{{$product->price}}"
+                                            <label>Contact No</label>
+                                            <input type="text" class="form-control numbersOnly" id="contactno"
+                                                   name="contactno" placeholder="Enter Contact no"
+                                                   maxlength="10"   value="{{$deliveryman->contactno}}"
                                                    onkeypress="return isNumber(event)"/>
-                                            @foreach($errors->get('price') as $eroor)
+                                            @foreach($errors->get('contactno') as $eroor)
                                                 <span class="help-block">{{ $error}}</span>
                                             @endforeach
                                             <div class="fv-plugins-message-container invalid-feedback"></div>
                                         </div>
- -->
-
-                                        
-
-                                      
-
-                                   
-
-                                    
-
-
-                                   
-
-                          <!--               <div class="form-group col-3">
-                                            <label>Shop Name </label>
-                                        
-                                            <select class="form-control" name="shop_id">
-                                                <option value="">--Select Shop --</option>
-                                                @if(!empty($shops))
-                                                    @foreach($shops as $shop)
-                                                        <option
-                                                            value="{{ $shop->id }}" @if($shop->id == $product->shop_id) selected @endif>{{ $shop->name .'  [ '. $shop->ownername.' ]'  }}</option>
-                                                    @endforeach
-                                                @endif
-                                            </select>
-
-                                            <div class="fv-plugins-message-container invalid-feedback"></div>
-                                        </div>
-
- -->
-                                     
 
                                     </div>
                                 </div>
@@ -118,28 +99,16 @@
                             {
                                 required: true
                             },
-                        brand_id:
-                            {
-                                required: true
-                            },
-                        category_id:
-                            {
-                                required: true
-                            },
-                        description:
-                            {
-                                required: true
-                            },
-                        // image:
-                        //     {
-                        //         required: true
-                        //     },
 
-                        price:
+                        email:
                             {
                                 required: true
                             },
-                        shop_id:
+                        address:
+                            {
+                                required: true
+                            },
+                        contactno:
                             {
                                 required: true
                             },
@@ -151,33 +120,18 @@
                             {
                                 required: "Name is required"
                             },
-                        // image:
-                        //     {
-                        //         required: "Imageis required"
-                        //     },
-
-                        brand_id:
+                        email:
                             {
-                                required: 'Select Brand'
+                                required: 'Email is required'
                             },
-                        category_id:
+                        address:
                             {
-                                required: 'Select Category'
+                                required: 'Address is required'
                             },
-                        description:
+                        contactno:
                             {
-                                required: 'Description is required'
+                                required: 'ContactNo is required'
                             },
-
-                        price:
-                            {
-                                required: 'Price is required'
-                            },
-                        shop_id:
-                            {
-                                required: 'Select Shop'
-                            },
-
 
                     },
                 highlight: function (element) {
@@ -217,7 +171,7 @@
                                     text: "DeliveryMan Updated Successfully",
                                     type: "success"
                                 }, function () {
-                                    window.location = "{{route('admin.deliveryman.index')}}"
+                                    window.location = "{{route('admin.deliveryman.index',$deliveryman->shopid)}}"
                                 });
 
                             } else if (data.status === 'error') {

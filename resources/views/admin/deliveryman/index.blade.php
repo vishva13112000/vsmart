@@ -14,7 +14,7 @@
                     <div class="kt-portlet__head-toolbar">
                         <div class="kt-portlet__head-wrapper">
                             <div class="kt-portlet__head-actions">
-                                <a href="{{route('admin.deliveryman.create')}}"
+                                <a href="{{route('admin.deliveryman.create',$id)}}"
                                    class="btn btn-brand btn-elevate btn-icon-sm">
                                     <i class="la la-plus"></i>
                                     Add Deliveryman
@@ -64,30 +64,20 @@
                                     <td>{{$deliveryman->address}}</td>
                                     <td>{{$deliveryman->email}}</td>
                                     <td>{{$deliveryman->contactno}}</td>
-                                  
-                              
+
+
                                     <td>
                                         @if($deliveryman->active == 1)
-                                            <div class="btn-group-horizontal" id="assign_remove_{{$deliveryman->id }}">
-                                                <button class="btn btn-success unassign ladda-button"
-                                                        data-style="slide-left" id="remove"
-                                                        url="{{route('admin.deliveryman.unassigned')}}"
-                                                        ruid="{{ $deliveryman->id }}" type="button"
-                                                        style="height:28px; padding:0 12px"><span class="ladda-label">Active</span>
-                                                </button>
+                                            <div class="btn-group-horizontal" id="assign_remove_{{$deliveryman->id }}" >
+                                                <button class="btn btn-info unassign ladda-button" data-style="slide-left" id="remove" url="{{route('admin.deliveryman.unassigned')}}" ruid="{{ $deliveryman->id }}"  type="button" style="height:28px; padding:0 12px"><span class="ladda-label">Active</span> </button>
                                             </div>
-                                            <div class="btn-group-horizontal" id="assign_add_{{ $deliveryman>id }}"
-                                                 style="display: none">
-                                                <button class="btn btn-danger assign ladda-button"
-                                                        data-style="slide-left" id="assign" uid="{{ $deliveryman>id }}"
-                                                        url="{{route('admin.deliveryman.assign')}}" type="button"
-                                                        style="height:28px; padding:0 12px"><span class="ladda-label">Inactive</span>
-                                                </button>
+                                            <div class="btn-group-horizontal" id="assign_add_{{ $deliveryman->id }}"  style="display: none"  >
+                                                <button class="btn btn-warning assign ladda-button" data-style="slide-left" id="assign" uid="{{ $deliveryman->id }}" url="{{route('admin.deliveryman.assign')}}" type="button"  style="height:28px; padding:0 12px"><span class="ladda-label">Inactive</span></button>
                                             </div>
                                         @endif
                                         @if($deliveryman->active == 0)
                                             <div class="btn-group-horizontal" id="assign_add_{{ $deliveryman->id }}">
-                                                <button class="btn btn-danger assign ladda-button" id="assign"
+                                                <button class="btn btn-warning assign ladda-button" id="assign"
                                                         data-style="slide-left" uid="{{ $deliveryman->id }}"
                                                         url="{{route('admin.deliveryman.assign')}}" type="button"
                                                         style="height:28px; padding:0 12px"><span class="ladda-label">Inactive</span>
@@ -95,7 +85,7 @@
                                             </div>
                                             <div class="btn-group-horizontal" id="assign_remove_{{ $deliveryman->id }}"
                                                  style="display: none">
-                                                <button class="btn  btn-success unassign ladda-button" id="remove"
+                                                <button class="btn  btn-info unassign ladda-button" id="remove"
                                                         ruid="{{ $deliveryman->id }}" data-style="slide-left"
                                                         url="{{route('admin.deliveryman.unassigned')}}" type="button"
                                                         style="height:28px; padding:0 12px"><span class="ladda-label">Active</span>
@@ -123,26 +113,26 @@
             <script>
                 $('.assign').click(function () {
 
-                    var category_id = $(this).attr('uid');
+                    var deliveryman_id = $(this).attr('uid');
                     var url = $(this).attr('url');
 
                     $.ajax({
                         url: url,
                         type: "POST",
                         data: {
-                            id: category_id,
+                            id: deliveryman_id,
                             _token: '{{ csrf_token() }}'
                         },
                         cache: false,
                         dataType: 'json',
                         success: function (data) {
-                            $('#assign_remove_' + category_id).show();
-                            $('#assign_add_' + category_id).hide();
+                            $('#assign_remove_' + deliveryman_id).show();
+                            $('#assign_add_' + deliveryman_id).hide();
                         }
                     });
                 });
                 $('.unassign').click(function () {
-                    var shopcategory_id = $(this).attr('ruid');
+                    var deliveryman = $(this).attr('ruid');
                     var url = $(this).attr('url');
 
 
@@ -150,14 +140,14 @@
                         url: url,
                         type: "PUT",
                         data: {
-                            id: category_id,
+                            id: deliveryman,
                             _token: '{{ csrf_token() }}'
                         },
                         cache: false,
                         dataType: 'json',
                         success: function (data) {
-                            $('#assign_remove_' + category_id).hide();
-                            $('#assign_add_' + category_id).show();
+                            $('#assign_remove_' + deliveryman).hide();
+                            $('#assign_add_' + deliveryman).show();
                         }
                     });
                 });
@@ -207,7 +197,7 @@
                                         text: "deliveryman Deleted Successfully",
                                         type: "success"
                                     }, function () {
-                                        window.location = "{{route('admin.deliveryman.index')}}"
+                                        window.location = "{{route('admin.deliveryman.index',$id)}}"
                                     });
 
                                 } else if (data.status === 'error') {

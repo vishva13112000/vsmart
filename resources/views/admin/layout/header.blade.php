@@ -295,13 +295,10 @@ class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-h
                                                                 class="kt-menu__link-text">Product Type</span></a></li>
 
 
-                                                            <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true">
-                                                            <a href="{{route('admin.deliveryman.index')}}"
-                                                            class="kt-menu__link "><i class="kt-menu__link-icon fas fa-shipping-fast"></i><span
-                                                            class="kt-menu__link-text">Delivery Man</span></a></li>
 
 
-                                                                
+
+
 
 
 

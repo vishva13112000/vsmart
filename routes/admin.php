@@ -94,13 +94,12 @@ Route::group(['prefix' => 'shop'], function () {
     Route::post('/deleteall', 'AdminAuth\ShopController@deleteall')->name('shop.deleteall');
     Route::any('/unassigned', 'AdminAuth\ShopController@unassigned')->name('shop.unassigned');
     Route::any('/assign', 'AdminAuth\ShopController@assign')->name('shop.assign');
-    Route::get('/add/deliveryman/{id}', 'AdminAuth\DeliverymanController@delivery')->name('shop.delivery');
 
 });
 
 Route::group(['prefix' => 'deliveryman'], function () {
-    Route::get('/index', 'AdminAuth\DeliverymanController@index')->name('deliveryman.index');
-    Route::get('/create', 'AdminAuth\DeliverymanController@create')->name('deliveryman.create');
+    Route::get('/index/{id}', 'AdminAuth\DeliverymanController@index')->name('deliveryman.index');
+    Route::get('/create/{id}', 'AdminAuth\DeliverymanController@create')->name('deliveryman.create');
     Route::post('/store', 'AdminAuth\DeliverymanController@store')->name('deliveryman.store');
     Route::get('/edit/{id}', 'AdminAuth\DeliverymanController@edit')->name('deliveryman.edit');
     Route::post('/update', 'AdminAuth\DeliverymanController@update')->name('deliveryman.update');

@@ -43,8 +43,6 @@ Route::group(['prefix' => 'employee'], function () {
   Route::get('/password/reset/{token}', 'EmployeeAuth\ResetPasswordController@showResetForm');
 });
 
-
-
 Route::group(['prefix' => 'shop'], function () {
   Route::get('/login', 'ShopAuth\LoginController@showLoginForm')->name('shop.login');
   Route::post('/login', 'ShopAuth\LoginController@login');
@@ -60,7 +58,7 @@ Route::group(['prefix' => 'shop'], function () {
 });
 
 Route::group(['prefix' => 'deliveryman'], function () {
-  Route::get('/login', 'DeliverymanAuth\LoginController@showLoginForm')->name('login');
+  Route::get('/login', 'DeliverymanAuth\LoginController@showLoginForm')->name('deliveryman.login');
   Route::post('/login', 'DeliverymanAuth\LoginController@login');
   Route::post('/logout', 'DeliverymanAuth\LoginController@logout')->name('logout');
 
