@@ -14,7 +14,7 @@
                     <div class="kt-portlet__head-toolbar">
                         <div class="kt-portlet__head-wrapper">
                             <div class="kt-portlet__head-actions">
-                                <a href="{{route('shop.deliveryman.create',$id)}}"
+                                <a href="{{route('shop.deliveryman.create')}}"
                                    class="btn btn-brand btn-elevate btn-icon-sm">
                                     <i class="la la-plus"></i>
                                     Add Deliveryman
@@ -24,12 +24,12 @@
                     </div>
                 </div>
                 <div class="kt-portlet__body">
-                    <div class="row">
-                        <div class="col-6">
-                            <button class="btn btn-danger delete-all" data-token="{{csrf_token()}}">Delete</button>
-                        </div>
+{{--                    <div class="row">--}}
+{{--                        <div class="col-6">--}}
+{{--                            <button class="btn btn-danger delete-all" data-token="{{csrf_token()}}">Delete</button>--}}
+{{--                        </div>--}}
 
-                    </div>
+{{--                    </div>--}}
                     <br/>
                     <div id="kt_table_1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                         <table
@@ -38,11 +38,11 @@
                             @csrf
                             <thead>
                             <tr>
-                                <th><input type="checkbox" name="selectall"
-                                           class="form-control custom-checkbox selectall" style="height: 15px;"></th>
+{{--                                <th><input type="checkbox" name="selectall"--}}
+{{--                                           class="form-control custom-checkbox selectall" style="height: 15px;"></th>--}}
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>Shop Name</th>
+
                                 <th>Address</th>
                                 <th>Email</th>
                                 <th>Contactno</th>
@@ -54,13 +54,13 @@
                             <tbody>
                             @foreach($deliverymans as $deliveryman)
                                 <tr>
-                                    <td><input type="checkbox" name="single[{{$deliveryman->id}}]"
-                                               data-id="{{$deliveryman->id}}"
-                                               class="form-control custom-checkbox singleselect" style="height: 15px;">
-                                    </td>
+{{--                                    <td><input type="checkbox" name="single[{{$deliveryman->id}}]"--}}
+{{--                                               data-id="{{$deliveryman->id}}"--}}
+{{--                                               class="form-control custom-checkbox singleselect" style="height: 15px;">--}}
+{{--                                    </td>--}}
                                     <td>{{$deliveryman->id}}</td>
                                     <td>{{$deliveryman->name}}</td>
-                                    <td>{{$deliveryman->shop->name}}</td>
+
                                     <td>{{$deliveryman->address}}</td>
                                     <td>{{$deliveryman->email}}</td>
                                     <td>{{$deliveryman->contactno}}</td>
@@ -197,7 +197,7 @@
                                         text: "deliveryman Deleted Successfully",
                                         type: "success"
                                     }, function () {
-                                        window.location = "{{route('shop.deliveryman.index',$id)}}"
+                                        window.location = "{{route('shop.deliveryman.index')}}"
                                     });
 
                                 } else if (data.status === 'error') {

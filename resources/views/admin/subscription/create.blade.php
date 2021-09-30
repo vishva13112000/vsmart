@@ -34,7 +34,7 @@
 
                                         <div class="form-group col-4">
                                             <label>Duration</label>
-                                            <input type="text" class="form-control numbersOnly" id="duration" name="duration" maxlength="10"  
+                                            <input type="text" class="form-control numbersOnly" id="duration" name="duration" maxlength="10"
                                                    onkeypress="return isNumber(event)"/>
                                             @foreach($errors->get('duration') as $eroor)
                                                 <span class="help-block">{{ $error}}</span>
@@ -54,7 +54,7 @@
 
                                          <div class="form-group col-4">
                                             <label>Price</label>
-                                            <input type="text" class="form-control numbersOnly" id="price" name="price" maxlength="10"  
+                                            <input type="text" class="form-control numbersOnly" id="price" name="price" maxlength="10"
                                                    onkeypress="return isNumber(event)"/>
                                             @foreach($errors->get('price') as $eroor)
                                                 <span class="help-block">{{ $error}}</span>
@@ -67,8 +67,8 @@
                                       <label for="title">Subscription Type </label>
                                       <select class="form-control " name="subscriptiontype">
                                         <option value="category">Category</option>
-                                        <option value="adds">Adds</option>
-                                        <option value="adds">Other</option>
+                                        <option value="ads">Ads</option>
+                                        <option value="both">Both</option>
                                     </select>
                                 </div>
 

@@ -20,6 +20,7 @@ class CreateDeliverymenTable extends Migration
             $table->string('email')->unique();
             $table->string('address');
             $table->string('contactno');
+            $table->boolean('active')->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

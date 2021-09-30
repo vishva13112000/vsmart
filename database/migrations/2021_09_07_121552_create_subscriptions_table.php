@@ -19,7 +19,11 @@ class CreateSubscriptionsTable extends Migration
             $table->double('duration',8,2);
             $table->enum('durationtype', ['Years','Months']);
             $table->double('price',8,2);
-            $table->enum('subscriptiontype', ['category', 'adds','both']);
+            $table->enum('subscriptiontype',['Ads','Category','Both']);
+            $table->integer('total_cat')->nullable();
+            $table->integer('total_ad')->nullable();
+            $table->integer('order_commission')->nullable();
+            $table->integer('total_orders')->nullable();
             $table->boolean('active')->default(1);
             $table->timestamps();
             $table->softDeletes()->nullable();

@@ -36,7 +36,7 @@
 
                                             <div class="form-group col-4">
                                             <label>Duration</label>
-                                            <input type="text" class="form-control numbersOnly" id="duration" name="duration" value="{{ $subscription->duration }}" maxlength="10"  
+                                            <input type="text" class="form-control numbersOnly" id="duration" name="duration" value="{{ $subscription->duration }}" maxlength="10"
                                                    onkeypress="return isNumber(event)"/>
                                             @foreach($errors->get('duration') as $eroor)
                                                 <span class="help-block">{{ $error}}</span>
@@ -56,7 +56,7 @@
 
                                          <div class="form-group col-4">
                                             <label>Price</label>
-                                            <input type="text" class="form-control numbersOnly" id="price" value="{{$subscription->price}}" name="price" maxlength="10"  
+                                            <input type="text" class="form-control numbersOnly" id="price" value="{{$subscription->price}}" name="price" maxlength="10"
                                                    onkeypress="return isNumber(event)"/>
                                             @foreach($errors->get('price') as $eroor)
                                                 <span class="help-block">{{ $error}}</span>
@@ -69,11 +69,11 @@
                                       <label for="title">Subscription Type </label>
                                       <select class="form-control " name="subscriptiontype">
                                         <option value="category" @if($subscription->subscriptiontype == 'category') selected @endif >Category</option>
-                                        <option value="adds"  @if($subscription->subscriptiontype == 'adds') selected @endif>Adds</option>
-                                        <option value="other"  @if($subscription->subscriptiontype == 'other') selected @endif>Other</option>
+                                        <option value="ads"  @if($subscription->subscriptiontype == 'ads') selected @endif>Ads</option>
+                                        <option value="both"  @if($subscription->subscriptiontype == 'other') selected @endif>Both</option>
                                     </select>
                                 </div>
-                                        
+
                                     </div>
                                 </div>
                                 <div class="row">

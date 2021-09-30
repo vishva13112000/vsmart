@@ -15,7 +15,7 @@
                             <div class="kt-portlet__head-toolbar">
                                 <div class="kt-portlet__head-wrapper">
                                     <div class="kt-portlet__head-actions">
-                                        <a href="{{route('shop.deliveryman.index',$id)}}" class="btn btn-success">Back</a>
+                                        <a href="{{route('shop.deliveryman.index')}}" class="btn btn-success">Back</a>
                                     </div>
                                 </div>
                             </div>
@@ -167,7 +167,7 @@
                                     text: "Deliveryman Created Successfully",
                                     type: "success"
                                 }, function () {
-                                    window.location = "{{route('shop.deliveryman.index',$id)}}"
+                                    window.location = "{{route('shop.deliveryman.index')}}"
                                 });
 
                             } else if (data.status === 'error') {

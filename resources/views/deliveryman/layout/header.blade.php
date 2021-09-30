@@ -341,8 +341,8 @@ class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-h
                                                                 <a href="{{route('deliveryman.home')}}">
 
 
-                                                                    <img alt="Logo" src="{{asset('assets/media/logos/naswiz.png')}}"
-                                                                    style=" height: 100px; width: 100px;"/>
+                                                                    <img alt="Logo" src="{{asset('assets/media/logos/vs.png')}}"
+                                                                    style=" height: 100px; width: 150px;"/>
 
 
                                                                 </a>

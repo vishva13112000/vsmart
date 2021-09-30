@@ -6,20 +6,21 @@ use App\Http\Controllers\Controller;
 use App\Models\Deliveryman;
 use App\Shop;
 use Illuminate\Http\Request;
-
+use Auth;
 class DeliverymanController extends Controller
 {
-    public function index($id)
+    public function index()
     {
-        $deliverymans = Deliveryman::where('shopid', $id)->orderBy('id', 'desc')->get();
-        return view('shop.deliveryman.index', compact('deliverymans', 'id'));
+        $shop = Auth::user();
+        $deliverymans = Deliveryman::where('shopid', $shop->id)->orderBy('id', 'desc')->get();
+        return view('shop.deliveryman.index', compact('deliverymans'));
     }
 
 
-    public function create($id)
+    public function create()
     {
-        $shop = Shop::where('id', $id)->first();
-        return view('shop.deliveryman.create', compact('shop', 'id'));
+        $shop =Auth::user();
+        return view('shop.deliveryman.create', compact('shop'));
     }
 
 
@@ -27,7 +28,7 @@ class DeliverymanController extends Controller
     {
         $deliveryman = new Deliveryman();
         $deliveryman->name = $request->name;
-        $deliveryman->shopid = $request->id;
+        $deliveryman->shopid = Auth::user()->id;
         $deliveryman->email = $request->email;
         $deliveryman->address = $request->address;
         $deliveryman->contactno = $request->contactno;
