@@ -155,4 +155,5 @@ class ProductsController extends Controller
         $products = Products::where('id', $request->id)->update(['active' => 0]);
         return response()->Json(['status' => 'success']);
     }
+
 }

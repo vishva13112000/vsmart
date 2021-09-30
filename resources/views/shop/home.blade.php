@@ -1,17 +1,9 @@
-@extends('shop.layout.auth')
 
+
+@extends('shop.main')
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
-
-                <div class="panel-body">
-                    You are logged in as Shop!
-                </div>
-            </div>
-        </div>
+    <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+        <br>
     </div>
-</div>
+
 @endsection
